@@ -7,8 +7,4 @@ public abstract class Obra{
         this.titulo = tit;
         this.editora = ed;
     }
-    //@Override
-    //public String toString() {
-        //return "Titulo: " + titulo + ", Editora: " + editora + ", Autor: " + autor;
-    //}
 }
