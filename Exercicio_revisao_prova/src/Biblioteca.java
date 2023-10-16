@@ -11,6 +11,7 @@ public class Biblioteca{
         }
     }
     public Biblioteca(String nome, String end){
+        super();
         this.nome = nome;
         this.endereco = end;
     }
