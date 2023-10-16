@@ -1,4 +1,4 @@
-public class Biblioteca {
+public class Biblioteca{
     
     private String nome;
     private String endereco;
@@ -10,9 +10,15 @@ public class Biblioteca {
             return false;
         }
     }
-    public void addBiblioteca(String nome, String end){
+    public Biblioteca(String nome, String end){
         this.nome = nome;
         this.endereco = end;
     }
 
+    public String getNome() {
+        return nome;
+    }
+    public String getEndereco() {
+        return endereco;
+    }
 }
