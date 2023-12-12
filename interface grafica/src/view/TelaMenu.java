@@ -5,11 +5,14 @@ import javax.swing.JFrame;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import dados.Dados;
 
 public class TelaMenu implements ActionListener{
     JFrame jfrm;
     JButton gerealuno, gereprof;
-    public TelaMenu(){
+    
+
+    public TelaMenu(Dados a){
         jfrm = new JFrame("Menu");
         jfrm.setLayout(new FlowLayout());
 	    jfrm.setSize(300, 300);
@@ -25,12 +28,12 @@ public class TelaMenu implements ActionListener{
         gerealuno.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 jfrm.dispose();
-                new TelaListagem("Aluno");
+                new TelaListagem("Aluno", a);
             }
         });
         gereprof.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                new TelaListagem("Professor");
+                new TelaListagem("Professor", a);
                 jfrm.dispose();
             }
         });

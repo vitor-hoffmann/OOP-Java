@@ -3,15 +3,16 @@ package main;
 //import java.util.*;
 //import negocio.*;
 import view.*;
-//import dados.*;
+import dados.*;
 
 public class Main {
 	
-	//private static Dados d = new Dados();
+	private static Dados d = new Dados();
 	//private static Scanner in = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		new TelaMenu();
+		d.preencherDados();
+		new TelaMenu(d);
 		/*new TelaMenu();
 		int op = -1;
 		int aux;

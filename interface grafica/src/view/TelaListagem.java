@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,15 +21,9 @@ public class TelaListagem implements ActionListener{
 	JScrollPane jscrlp;
 	JButton editar, cadastrar, deletar;
 	String[] nomes;
-	Dados a = new Dados();
-	int i = 0;
 	
 
-	public TelaListagem(String escolha) {   
-		if (i == 0){
-			a.preencherDados();
-		}
-		i++;
+	public TelaListagem(String escolha, Dados a) {   
 		JFrame jfrm = new JFrame("Listagem de Dados");  
 		if (escolha.equals("Professor")){
 			jlst = new JList<String>(a.getNomeProfessores());
@@ -98,18 +93,25 @@ public class TelaListagem implements ActionListener{
 						
 						confirmar.addActionListener(new ActionListener() {
             				public void actionPerformed(ActionEvent e){
-								String g = nome.getText();
-								String b = id.getText();
-								String c = cpf.getText();
-								String d = telefone.getText();
-								double f = Double.parseDouble(valoraula.getText());
-								Professor p = new Professor(g, b, c, d, f);
-								a.setProfessor(idx, p);
-								new TelaMenu();
+								for (int i = 0; i < a.getnProfs(); i++){
+									if (i == idx){
+										String g = nome.getText();
+										String b = id.getText();
+										String c = cpf.getText();
+										String d = telefone.getText();
+										double f = Double.parseDouble(valoraula.getText());
+										a.getProfessor(idx).setNome(g);
+										a.getProfessor(idx).setNumID(b);
+										a.getProfessor(idx).setCPF(c);
+										a.getProfessor(idx).setNumTel(d);
+										a.getProfessor(idx).setValorHoraAula(f);
+										System.out.println(a.getProfessor(idx).getNome());
+									}
+								}
+								new TelaMenu(a);
 								jfrm.dispose();
             				}
         				});
-						jlst.setListData(a.getNomeProfessores());
 					}
 				}
             }
