@@ -45,9 +45,45 @@ public class TelaListagem implements ActionListener{
 		jfrm.add(deletar);
 		cadastrar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                int idx = jlst.getSelectedIndex();
-				if (idx != -1){
-					
+                if (escolha.equals("Professor")){
+					jfrm.setLayout(new FlowLayout());
+					editar.setVisible(false);
+					deletar.setVisible(false);
+					cadastrar.setVisible(false);
+					jlst.setVisible(false);
+					jscrlp.setVisible(false);
+					JLabel nom = new JLabel("Nome: ");
+					JTextField nome = new JTextField();
+					JLabel idd = new JLabel("Id: ");
+					JTextField id = new JTextField();
+					JLabel cpff = new JLabel("Cpf: ");
+					JTextField cpf = new JTextField();
+					JLabel tele = new JLabel("Telefone: ");
+					JTextField telefone = new JTextField();
+					JLabel valora = new JLabel("Valor da Aula: ");
+					JTextField valoraula = new JTextField();
+					nome.setPreferredSize(new Dimension(200,30));
+					id.setPreferredSize(new Dimension(200,30));
+					cpf.setPreferredSize(new Dimension(200,30));
+					telefone.setPreferredSize(new Dimension(200,30));
+					valoraula.setPreferredSize(new Dimension(200,30));
+					jfrm.add(nom);
+					jfrm.add(nome);
+					jfrm.add(idd);
+					jfrm.add(id);
+					jfrm.add(cpff);
+					jfrm.add(cpf);
+					jfrm.add(tele);
+					jfrm.add(telefone);
+					jfrm.add(valora);
+					jfrm.add(valoraula);
+					JButton confirmar = new JButton("Confirmar");
+					jfrm.add(confirmar);
+					confirmar.addActionListener(new ActionListener() {
+            				public void actionPerformed(ActionEvent e){
+								
+            				}
+        				});
 				}
             }
         });
@@ -105,7 +141,71 @@ public class TelaListagem implements ActionListener{
 										a.getProfessor(idx).setCPF(c);
 										a.getProfessor(idx).setNumTel(d);
 										a.getProfessor(idx).setValorHoraAula(f);
-										System.out.println(a.getProfessor(idx).getNome());
+									}
+								}
+								new TelaMenu(a);
+								jfrm.dispose();
+            				}
+        				});
+					}
+					if (escolha.equals("Aluno")){
+
+						jfrm.setLayout(new FlowLayout());
+						editar.setVisible(false);
+						deletar.setVisible(false);
+						cadastrar.setVisible(false);
+						jlst.setVisible(false);
+						jscrlp.setVisible(false);
+						JLabel nom = new JLabel("Nome: ");
+						JTextField nome = new JTextField();
+						JLabel idd = new JLabel("Id: ");
+						JTextField id = new JTextField();
+						JLabel cpff = new JLabel("Cpf: ");
+						JTextField cpf = new JTextField();
+						JLabel tele = new JLabel("Telefone: ");
+						JTextField telefone = new JTextField();
+						JLabel dtnas = new JLabel("Data de nascimento: ");
+						JTextField dtnac = new JTextField();
+						JLabel end = new JLabel("Endereco: : ");
+						JTextField ende = new JTextField();
+
+						nome.setPreferredSize(new Dimension(200,30));
+						id.setPreferredSize(new Dimension(200,30));
+						cpf.setPreferredSize(new Dimension(200,30));
+						telefone.setPreferredSize(new Dimension(200,30));
+						dtnac.setPreferredSize(new Dimension(200,30));
+						ende.setPreferredSize(new Dimension(200,30));
+						jfrm.add(nom);
+						jfrm.add(nome);
+						jfrm.add(idd);
+						jfrm.add(id);
+						jfrm.add(cpff);
+						jfrm.add(cpf);
+						jfrm.add(tele);
+						jfrm.add(telefone);
+						jfrm.add(dtnas);
+						jfrm.add(dtnac);
+						jfrm.add(end);
+						jfrm.add(ende);
+						JButton confirmar = new JButton("Confirmar");
+						jfrm.add(confirmar);
+						
+						confirmar.addActionListener(new ActionListener() {
+            				public void actionPerformed(ActionEvent e){
+								for (int i = 0; i < a.getnProfs(); i++){
+									if (i == idx){
+										String nom = nome.getText();
+										String ide = id.getText();
+										String cepf = cpf.getText();
+										String telef = telefone.getText();
+										String nasc = dtnac.getText();
+										String end = ende.getText();
+										a.getAluno(idx).setNome(nom);
+										a.getAluno(idx).setNumID(ide);
+										a.getAluno(idx).setCPF(cepf);
+										a.getAluno(idx).setNumTel(telef);
+										a.getAluno(idx).setDataNasc(nasc);
+										a.getAluno(idx).setEndereco(end);
 									}
 								}
 								new TelaMenu(a);
