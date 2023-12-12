@@ -4,8 +4,6 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,7 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import dados.*;
-import negocio.*;
+import negocio.Professor;
 
 public class TelaListagem implements ActionListener{
 	JList<String> jlst;
@@ -62,11 +60,11 @@ public class TelaListagem implements ActionListener{
 					JTextField telefone = new JTextField();
 					JLabel valora = new JLabel("Valor da Aula: ");
 					JTextField valoraula = new JTextField();
-					nome.setPreferredSize(new Dimension(200,30));
-					id.setPreferredSize(new Dimension(200,30));
-					cpf.setPreferredSize(new Dimension(200,30));
-					telefone.setPreferredSize(new Dimension(200,30));
-					valoraula.setPreferredSize(new Dimension(200,30));
+					nome.setPreferredSize(new Dimension(230,30));
+					id.setPreferredSize(new Dimension(250,30));
+					cpf.setPreferredSize(new Dimension(240,30));
+					telefone.setPreferredSize(new Dimension(215,30));
+					valoraula.setPreferredSize(new Dimension(190,30));
 					jfrm.add(nom);
 					jfrm.add(nome);
 					jfrm.add(idd);
@@ -81,7 +79,20 @@ public class TelaListagem implements ActionListener{
 					jfrm.add(confirmar);
 					confirmar.addActionListener(new ActionListener() {
             				public void actionPerformed(ActionEvent e){
-								
+								String g = nome.getText();
+								String b = id.getText();
+								String c = cpf.getText();
+								String d = telefone.getText();
+								double f = Double.parseDouble(valoraula.getText());
+								Professor professor = new Professor(g, b, c, d, f);
+								Professor[] novoArray = new Professor[a.getnProfs() + 1];
+								System.arraycopy(a.getProfessores(), 0, novoArray, 0, a.getnProfs());
+								novoArray[a.getnProfs()] = professor;
+								a.setProfessores(novoArray);
+								nomes = a.getNomeProfessores();
+								jlst.setListData(a.getNomeProfessores());
+								new TelaMenu(a);
+								jfrm.dispose();
             				}
         				});
 				}
@@ -109,11 +120,11 @@ public class TelaListagem implements ActionListener{
 						JTextField telefone = new JTextField();
 						JLabel valora = new JLabel("Valor da Aula: ");
 						JTextField valoraula = new JTextField();
-						nome.setPreferredSize(new Dimension(200,30));
-						id.setPreferredSize(new Dimension(200,30));
-						cpf.setPreferredSize(new Dimension(200,30));
-						telefone.setPreferredSize(new Dimension(200,30));
-						valoraula.setPreferredSize(new Dimension(200,30));
+						nome.setPreferredSize(new Dimension(230,30));
+						id.setPreferredSize(new Dimension(250,30));
+						cpf.setPreferredSize(new Dimension(240,30));
+						telefone.setPreferredSize(new Dimension(215,30));
+						valoraula.setPreferredSize(new Dimension(190,30));
 						jfrm.add(nom);
 						jfrm.add(nome);
 						jfrm.add(idd);
